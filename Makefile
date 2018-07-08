@@ -6,40 +6,47 @@
 #    By: ryaoi <ryaoi@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/07/03 18:35:47 by ryaoi             #+#    #+#              #
-#    Updated: 2018/07/08 13:55:24 by ryaoi            ###   ########.fr        #
+#    Updated: 2018/07/08 14:42:40 by ryaoi            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 		= libfts.a
 
-SRC_LIB		= ./ft_isalpha.s \
-			  ./ft_isdigit.s \
-			  ./ft_isascii.s \
-			  ./ft_isalnum.s \
-			  ./ft_toupper.s \
-			  ./ft_tolower.s \
-			  ./ft_isprint.s \
-			  ./ft_bzero.s \
-			  ./ft_strcat.s \
-			  ./ft_puts.s \
-			  ./ft_strlen.s \
-			  ./ft_memset.s \
-			  ./ft_memcpy.s \
-			  ./ft_strdup.s
+SRC			= ft_isalpha.s \
+			  ft_isdigit.s \
+			  ft_isascii.s \
+			  ft_isalnum.s \
+			  ft_toupper.s \
+			  ft_tolower.s \
+			  ft_isprint.s \
+			  ft_bzero.s \
+			  ft_strcat.s \
+			  ft_puts.s \
+			  ft_strlen.s \
+			  ft_memset.s \
+			  ft_memcpy.s \
+			  ft_strdup.s
 
-OBJ_LIB		= $(SRC_LIB:.s=.o)
+OBJ			= $(addprefix $(OBJ_DIR), $(SRC:%.s=%.o))
 
-%.o:%.s
+
+HEADER		= ./libfts.h
+
+SRC_DIR  	= ./src/
+OBJ_DIR		= ./obj/
+
+
+$(OBJ_DIR)%.o: $(SRC_DIR)%.s $(HEADER)
 	nasm -fmacho64 $< -o $@
 
 all: $(NAME)
 
-$(NAME):$(OBJ_LIB)
-		ar rc $(NAME) $(OBJ_LIB)
+$(NAME): $(OBJ)
+		ar rc $(NAME) $(OBJ)
 		ranlib $(NAME)
 
 clean:
-		rm -rf $(OBJ_LIB)
+		rm -rf $(OBJ)
 	
 fclean: clean
 		rm -rf $(NAME)
