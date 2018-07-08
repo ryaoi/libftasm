@@ -1,5 +1,7 @@
 ;-----------------------------------------------
-;	ft_puts.s
+;	ft_putstr.s
+;
+;   void ft_putstr(char *s)
 ;
 ;	This 64-bit function write the string s, 
 ;	and a terminating newline character,
@@ -13,13 +15,11 @@
 %define STDOUT				1
 %define WRITE				4
 
-	global _ft_puts
+	global _ft_putstr
 	extern _ft_strlen
 
 	section .text
-_ft_puts:
-	cmp rdi, 0
-	je	_succesful_exit
+_ft_putstr:
 	push rdi
 	push rsi
 	call _ft_strlen
@@ -30,20 +30,4 @@ _ft_puts:
 	mov rdi, STDOUT
 	mov rax, MACHO_SYSCALL(WRITE)
 	syscall
-	mov rdx, endline.len
-	lea rsi, [rel endline.string]
-	mov rax, MACHO_SYSCALL(WRITE)
-	syscall
-	cmp rax, 0
-	jge _succesful_exit
-	mov rax, -1				; EOF
 	ret
-
-_succesful_exit:
-	mov rax, 10
-	ret
-
-	section .data
-endline:
-	.string db 10
-	.len equ $ - endline.string

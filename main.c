@@ -6,7 +6,7 @@
 /*   By: ryaoi <ryaoi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/08 14:56:11 by ryaoi             #+#    #+#             */
-/*   Updated: 2018/07/08 16:56:28 by ryaoi            ###   ########.fr       */
+/*   Updated: 2018/07/08 21:41:59 by ryaoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +91,10 @@ int main()
 	printf("=======STRDUP==========\n");
 	test_strdup();
 
+	printf("==========CAT==========\n");
+
+	int fd = open("main.c", O_RDONLY);
+	ft_cats(fd);
+	
 	return 0;
 }

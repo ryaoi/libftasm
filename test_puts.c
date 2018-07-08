@@ -6,7 +6,7 @@
 /*   By: ryaoi <ryaoi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/08 15:23:11 by ryaoi             #+#    #+#             */
-/*   Updated: 2018/07/08 15:23:19 by ryaoi            ###   ########.fr       */
+/*   Updated: 2018/07/08 20:26:27 by ryaoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void		test_puts(void)
 	
 	ret = ft_puts("testing puts!");
 	ret_real = puts("testing puts!");
-	printf("mine :%d\t real:%d\n", ret, ret_real);
+	printf("mine :%d\t real:%d\t", ret, ret_real);
 	if (ret == ret_real)
 		printf(GOOD);
 	else
@@ -27,7 +27,7 @@ void		test_puts(void)
 
 	ret = ft_puts("");
 	ret_real = puts("");
-	printf("mine :%d\t real:%d\n", ret, ret_real);
+	printf("mine :%d\t real:%d\t", ret, ret_real);
 	if (ret == ret_real)
 		printf(GOOD);
 	else

@@ -6,7 +6,7 @@
 /*   By: ryaoi <ryaoi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/08 14:54:27 by ryaoi             #+#    #+#             */
-/*   Updated: 2018/07/08 15:31:24 by ryaoi            ###   ########.fr       */
+/*   Updated: 2018/07/08 20:52:54 by ryaoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include <stdarg.h>
 #include <ctype.h>
 #include <strings.h>
+#include <fcntl.h>
 #include "libfts.h"
 
 #define GOOD  "\033[1;32m[GOOD]\n\033[0m"

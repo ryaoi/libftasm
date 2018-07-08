@@ -6,7 +6,7 @@
 #    By: ryaoi <ryaoi@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/07/03 18:35:47 by ryaoi             #+#    #+#              #
-#    Updated: 2018/07/08 16:07:33 by ryaoi            ###   ########.fr        #
+#    Updated: 2018/07/08 21:37:52 by ryaoi            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,10 @@ SRC			= ft_isalpha.s \
 			  ft_memset.s \
 			  ft_memcpy.s \
 			  ft_strcpy.s \
-			  ft_strdup.s
+			  ft_strdup.s \
+			  ft_cat.s \
+			  ft_putstr.s \
+			  ft_strjoin.s
 
 OBJ			= $(addprefix $(OBJ_DIR), $(SRC:%.s=%.o))
 
