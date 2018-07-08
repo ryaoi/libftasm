@@ -6,7 +6,7 @@
 /*   By: ryaoi <ryaoi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/08 13:56:03 by ryaoi             #+#    #+#             */
-/*   Updated: 2018/07/08 14:08:01 by ryaoi            ###   ########.fr       */
+/*   Updated: 2018/07/08 16:35:16 by ryaoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,10 @@ int		ft_puts(const char *s);
 void	*ft_memset(void *b, int c, size_t len);
 void	*ft_memcpy(void *restrict dst, const void *restrict src, size_t n);
 char	*ft_strdup(const char *s1);
+
+
+
+// BONUS
+char	*ft_strcpy(char * dst, const char * src);
 
 #endif

@@ -14,23 +14,29 @@
 	global _ft_strdup
 	extern _malloc
 	extern _ft_strlen
-	extern _ft_strcpy
+	extern _ft_memcpy
+	extern _ft_bzero
 
 	section .text
 _ft_strdup:
-	push rdi			;align for malloc
 	call _ft_strlen		; get the size of the s1
+	mov rdx, rax		; store len of s1 for 3rd param of memcpy
+	push rdi
 	mov rdi, rax
-	add rdi, 1			; +1 for '\0'
 	call _malloc		; malloc(len)
 	cmp rax, 0
 	je	strdup_fail		; if malloc = NULL then return 
+	mov rdi, rax		;	1st param for bzero
+	mov rsi, rdx		;	2nd param for bzero
+	call _ft_bzero
+	pop rdi
+	mov rsi, rdi
 	mov rdi, rax
-	pop rsi
-	push rax			; save return address
-	call _ft_strcpy
-	pop rax				; get return address
+	dec rdi
+	call _ft_memcpy
+
 	ret
 
 strdup_fail:
+	pop rdi
 	ret

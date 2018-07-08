@@ -1,161 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ryaoi <ryaoi@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/07/08 14:56:11 by ryaoi             #+#    #+#             */
+/*   Updated: 2018/07/08 16:56:28 by ryaoi            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <unistd.h>
-#include <stdarg.h>
-#include <ctype.h>
-#include <strings.h>
-#include "libfts.h"
-
-#define GOOD  "\033[1;32m[GOOD]\n\033[0m"
-#define BAD "\033[1;31m[BAD]\n\033[0m"
-
-void	test_bzero(void)
-{
-	char dst_mine1[20] = "ABCDEFGHIJK";
-	char dst_real1[20] = "ABCDEFGHIJK";
-
-	printf("[Value:%s]\t", dst_mine1);
-	ft_bzero(dst_mine1, 20);
-	bzero(dst_real1, 20);
-	if (strcmp(dst_mine1, dst_real1) == 0)
-		printf(GOOD);
-	else
-		printf(BAD);
-
-	strcpy(dst_mine1,"!");
-	strcpy(dst_real1,"!");
-	printf("[Value:%s]\t", dst_mine1);
-	ft_bzero(dst_mine1, 20);
-	bzero(dst_real1, 20);
-	if (strcmp(dst_mine1, dst_real1) == 0)
-		printf(GOOD);
-	else
-		printf(BAD);
-
-}
-
-void	test_strcat(void)
-{
-	char dst_mine1[100] = "ABCDEFGHIJK\0";
-	char dst_real1[100] = "ABCDEFGHIJK\0";
-	char	*ret_mine = NULL;
-	char	*ret_real = NULL;
-
-	printf("[s1:%s, s2:%s] -> ", dst_mine1, "LMNOP");
-	ret_mine = ft_strcat(dst_mine1, "LMNOP\0");
-	ret_real = strcat(dst_real1, "LMNOP\0");
-	printf("s1:%s\t", dst_mine1);
-	if (strcmp(ret_mine, ret_real) == 0)
-		printf(GOOD);
-	else
-		printf(BAD);
-
-	bzero(dst_mine1, 100);
-	bzero(dst_real1, 100);
-	printf("[s1:%s, s2:%s] -> ", dst_mine1, "TESTINGTESITNITNITN");
-	ret_mine = ft_strcat(dst_mine1, "TESTINGTESITNITNITN");
-	ret_real = strcat(dst_real1, "TESTINGTESITNITNITN");
-	printf("s1:%s\t", dst_mine1);
-	if (strcmp(ret_mine, ret_real) == 0)
-		printf(GOOD);
-	else
-		printf(BAD);
-
-}
-
-void		test_strlen(void)
-{
-	int len = ft_strlen("AAAAAAA\0");
-	int len_real = strlen("AAAAAAA\0");
-	printf("[Value:%s]\tmine:%d\treal:%d\t", "AAAAAAA\0", len, len_real);
-	if (len == len_real)
-		printf(GOOD);
-	else
-		printf(BAD);
-	len = ft_strlen("\0");
-	len_real = strlen("\0");
-	printf("[Value:%s]\tmine:%d\treal:%d\t", "\0", len, len_real);
-	if (len == len_real)
-		printf(GOOD);
-	else
-		printf(BAD);
-}
-
-void		test_puts(void)
-{
-	int		ret;
-	int		ret_real;
-	
-	ret = ft_puts("testing puts!");
-	ret_real = puts("testing puts!");
-	printf("mine :%d\t real:%d\n", ret, ret_real);
-	if (ret == ret_real)
-		printf(GOOD);
-	else
-		printf(BAD);
-
-	ret = ft_puts("");
-	ret_real = puts("");
-	printf("mine :%d\t real:%d\n", ret, ret_real);
-	if (ret == ret_real)
-		printf(GOOD);
-	else
-		printf(BAD);
-}
-
-void		test_memset(void)
-{
-	char	buffer1[500];
-	char	buffer2[500];
-
-	bzero(buffer1, 500);
-	bzero(buffer2, 500);
-	ft_memset(buffer1, 'c', 10);
-	memset(buffer2, 'c', 10);
-	printf("Param:buffer[500], 'c', 10 | \t mine:%s real:%s\t", buffer1, buffer2);
-	if (strcmp(buffer1, buffer2) == 0)
-		printf(GOOD);
-	else
-		printf(BAD);
-	bzero(buffer1, 500);
-	bzero(buffer2, 500);
-	ft_memset(buffer1, '1', 0);
-	memset(buffer2, '1', 0);
-	printf("Param:buffer[500], '1', 0  | \t mine:%s real:%s\t", buffer1, buffer2);
-	if (strcmp(buffer1, buffer2) == 0)
-		printf(GOOD);
-	else
-		printf(BAD);
-
-}
-
-void		test_memcpy(void)
-{
-	char	buffer1[500];
-	char	buffer2[500];
-
-	bzero(buffer1, 500);
-	bzero(buffer2, 500);
-	char 	*src = "copy this string!";
-	ft_memcpy(buffer1, src, strlen(src));
-	memcpy(buffer2, src, strlen(src));
-	printf("Src: %s n:%lu | \t mine:%s real:%s\t", src, strlen(src), buffer1, buffer2);
-	if (strcmp(buffer1, buffer2) == 0)
-		printf(GOOD);
-	else
-		printf(BAD);
-	bzero(buffer1, 500);
-	bzero(buffer2, 500);
-	ft_memcpy(buffer1, src, 4);
-	memcpy(buffer2, src, 4);
-	printf("Src: %s n:%lu | \t mine:%s real:%s\t", src, strlen(src), buffer1, buffer2);
-	if (strcmp(buffer1, buffer2) == 0)
-		printf(GOOD);
-	else
-		printf(BAD);
-
-}
+#include "test.h"
 
 void		test_retint(const char *limit_str, ...)
 {
@@ -232,6 +87,9 @@ int main()
 
 	printf("=======MEMCPY==========\n");
 	test_memcpy();
+
+	printf("=======STRDUP==========\n");
+	test_strdup();
 
 	return 0;
 }
