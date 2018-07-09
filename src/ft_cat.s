@@ -1,9 +1,9 @@
 ;-----------------------------------------------
 ;	_ft_cat.s
 ;
-;	void    ft_cats(int fd);
+;	void    ft_cat(int fd);
 ;
-;	The ft_cats() function read fd sequentially,
+;	The ft_cat() function read fd sequentially,
 ;   writing them to the standard output.
 ;
 ;	ryaoi@student.42.fr
@@ -14,58 +14,73 @@
 %define STDOUT				1
 %define READ                3
 %define WRITE				4
-%define BUFFER_SIZE			10
+%define BUFFER_SIZE			80
 
-    global _ft_cats
+    global _ft_cat
     extern _ft_putstr
     extern _ft_strdup
     extern _ft_strjoin
     extern _free
 
     section .text
-_ft_cats:
-    cmp rdi, -1
-    jz exit_ft_cats
-    push r15
-    xor r15, r15
-loop_read:
-    lea rsi, [rel buffer]            ; void *buf
-    mov rdx, BUFFER_SIZE             ; size_t nbyte
-    mov rax, MACHO_SYSCALL(READ)     ; read
-    syscall
-    push rax
-    cmp r15, 0
-    jnz concatenate
-    lea rdi, [rel buffer]            ; void *buf
-    call _ft_strdup
-    mov r15, rax
-    pop rax
-    cmp rax, -1
-    jz exit_ft_cats
-    cmp rax, 0
-    jz loop_read
-    jmp print_str
-concatenate:
-    mov rdi, r15
-    lea rsi, [rel buffer]
-    call _ft_strjoin
-    mov rdi, r15
-    mov r15, rax
-    call _free
-    pop rax
-    cmp rax, -1
-    jz exit_ft_cats
-    cmp rax, 0
-    jz loop_read
-print_str:
-    mov rdi, rsi
-   call _ft_putstr              ; just for now
-   mov rdi, r15
-   call _free
-exit_ft_cats:
-    pop r15
-    ret
+_ft_cat:
+	push rbp
+	mov rbp, rsp
+	cmp rdi, -1
+	jz _exit_ft_cats
+	xor r15, r15			; stock address for print all
+
+_loop_read:
+	push r15				;save r15
+	push rdi				;rdi should always stock fd
+	lea rsi, [rel buffer]
+	mov rdx, BUFFER_SIZE
+	mov rax, MACHO_SYSCALL(READ)
+	syscall
+	mov r14, rax			;save ret of READ for later
+	pop rdi
+	pop r15
+	cmp r14, -1
+	jz _exit_ft_cats
+	cmp r15, 0
+	jnz _joinstr
+
+	push r14
+	push rdi
+	lea rdi, [rel buffer]
+	call _ft_strdup
+	mov r15, rax
+	pop rdi
+	pop r14
+	cmp r14, BUFFER_SIZE
+	jz _loop_read
+	jmp _print_result
+
+_joinstr:
+	push r15
+	push rdi
+	mov rdi, r15
+	lea rsi, [rel buffer]
+	call _ft_strjoin
+	pop rdi
+	pop r15
+	mov r15, rax			;new string
+
+	cmp r14, -1
+	jz _exit_ft_cats
+	cmp r14, BUFFER_SIZE
+	je _loop_read
+
+_print_result:
+	mov rdi, r15
+	call _ft_putstr
+
+	mov rdi, r15
+	call _free
+	
+_exit_ft_cats:
+	leave
+	ret
 
     section .bss
-buffer: resb BUFFER_SIZE
-
+buffer: resb BUFFER_SIZE+1

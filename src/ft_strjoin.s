@@ -19,6 +19,8 @@
 
     section .text
 _ft_strjoin:
+	push rbp
+	mov rbp, rsp
     push r15
     push rdi
     push rsi
@@ -33,14 +35,16 @@ _ft_strjoin:
     pop rsi
     pop rdi
     add r15, rax
+    push r15
     push rdi
     push rsi
-    mov rdi, rax
+    mov rdi, r15
     call _malloc
     cmp rax, 0
     jz  strjoin_exit
     pop rsi
     pop rdi
+    pop r15
 
     mov r15, rax
     push rdi
@@ -61,4 +65,5 @@ _ft_strjoin:
     mov rax, r15            ; return new address
 strjoin_exit:
     pop r15
+    leave
     ret
