@@ -1,5 +1,7 @@
 ;-----------------------------------------------
-;	_ft_isprint.s
+;	ft_isprint.s
+;
+;	int		ft_isprint(int c);
 ;
 ;	This 64-bit function tests for any printing
 ;	character, including space (` ').
@@ -12,13 +14,17 @@
 
 	section .text
 _ft_isprint:
+	push rbp
+	mov rbp, rsp
 	cmp rdi, 0x20
 	jnge _not_print
-	cmp rdi, 0x127
+	cmp rdi, 0x7E
 	jg _not_print
 	mov rax, 1
+	leave
 	ret
 
 _not_print:
 	xor rax, rax
+	leave
 	ret

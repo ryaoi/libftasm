@@ -1,5 +1,5 @@
 ;-----------------------------------------------
-;	_ft_memcpy.s
+;	ft_memcpy.s
 ;
 ;	void *memcpy(void *restrict dst,
 ;				 const void *restrict src,
@@ -16,7 +16,10 @@
 
 	section .text
 _ft_memcpy:
+	push rbp
+	mov rbp, rsp
 	mov rax, rdi
 	mov rcx, rdx
 	rep movsb			;mov till rcx = 0
+	leave
 	ret

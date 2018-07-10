@@ -18,6 +18,8 @@
 
 	section .text
 _ft_puts:
+	push rbp
+	mov rbp, rsp
 	cmp rdi, 0
 	je	_succesful_exit
 	push rdi
@@ -37,10 +39,12 @@ _ft_puts:
 	cmp rax, 0
 	jge _succesful_exit
 	mov rax, -1				; EOF
+	leave
 	ret
 
 _succesful_exit:
 	mov rax, 10
+	leave
 	ret
 
 	section .data

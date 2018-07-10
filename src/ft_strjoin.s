@@ -21,6 +21,10 @@
 _ft_strjoin:
 	push rbp
 	mov rbp, rsp
+    cmp rdi, 0
+    jz strjoin_undefined_exit
+    cmp rsi, 0
+    jz strjoin_undefined_exit
     push r15
     push rdi
     push rsi
@@ -67,3 +71,8 @@ strjoin_exit:
     pop r15
     leave
     ret
+
+strjoin_undefined_exit:
+	mov rax, 0
+	leave
+	ret

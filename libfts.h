@@ -6,7 +6,7 @@
 /*   By: ryaoi <ryaoi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/08 13:56:03 by ryaoi             #+#    #+#             */
-/*   Updated: 2018/07/09 20:38:13 by ryaoi            ###   ########.fr       */
+/*   Updated: 2018/07/10 16:47:08 by ryaoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,10 @@ void    ft_cat(int fd);
 
 
 // BONUS
-char	*ft_strcpy(char * dst, const char * src);
+char	*ft_strcpy(char * dst, const char *src);
+char	*ft_strncpy(char *dst, const char *src, size_t n);
 void    ft_putstr(char *s);
 char    *ft_strjoin(char *str1, char *str2);
+char	*ft_strsub(char *str, unsigned int start, size_t len);
 
 #endif

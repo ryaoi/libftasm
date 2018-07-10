@@ -20,6 +20,8 @@
 
 	section .text
 _ft_putstr:
+	cmp rdi, 0
+	jz handle_null
 	push rdi
 	push rsi
 	call _ft_strlen
@@ -30,4 +32,8 @@ _ft_putstr:
 	mov rdi, STDOUT
 	mov rax, MACHO_SYSCALL(WRITE)
 	syscall
+	ret
+
+handle_null:
+	xor rax, rax
 	ret

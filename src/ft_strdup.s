@@ -1,5 +1,5 @@
 ;-----------------------------------------------
-;	_ft_strdup.s
+;	ft_strdup.s
 ;
 ;	char *strdup(const char *s1)
 ;
@@ -33,4 +33,5 @@ _ft_strdup:
 	ret
 
 strdup_fail:
+	pop rdi
 	ret

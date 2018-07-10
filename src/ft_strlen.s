@@ -12,6 +12,8 @@
 
 	section .text
 _ft_strlen:
+	push rbp
+	mov rbp, rsp
 	push rcx
 	push rbx
 	mov rbx, rdi
@@ -23,4 +25,5 @@ _ft_strlen:
 	mov rax, rdi
 	pop rbx
 	pop rcx
+	leave
 	ret

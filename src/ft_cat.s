@@ -14,12 +14,13 @@
 %define STDOUT				1
 %define READ                3
 %define WRITE				4
-%define BUFFER_SIZE			80
+%define BUFFER_SIZE			4096
 
     global _ft_cat
     extern _ft_putstr
     extern _ft_strdup
     extern _ft_strjoin
+    extern _ft_bzero
     extern _free
 
     section .text
@@ -64,8 +65,22 @@ _joinstr:
 	call _ft_strjoin
 	pop rdi
 	pop r15
+
+	push r15
+	push rdi
+	call _free				; free the old string
+	pop rdi
+	pop r15
+
 	mov r15, rax			;new string
 
+	push rsi
+	push rdi
+	lea rdi, [rel buffer]
+	mov rsi, BUFFER_SIZE
+	call _ft_bzero			; clear buffer
+	pop rdi
+	pop rsi
 	cmp r14, -1
 	jz _exit_ft_cats
 	cmp r14, BUFFER_SIZE
