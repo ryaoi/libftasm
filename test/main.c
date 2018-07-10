@@ -6,7 +6,7 @@
 /*   By: ryaoi <ryaoi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/08 14:56:11 by ryaoi             #+#    #+#             */
-/*   Updated: 2018/07/10 16:52:54 by ryaoi            ###   ########.fr       */
+/*   Updated: 2018/07/10 17:57:22 by ryaoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,10 +94,13 @@ int main()
 	printf("==========CAT==========\n");
 
 	int fd = open("libfts.h", O_RDONLY);
+	if (fd == -1)
+		return (EXIT_FAILURE);
 	ft_cat(fd);
-
 	
 	printf("=======ENDCAT==========\n");
+
+	printf("\n\n[*]Bonus!\n\n");
 
 	printf("=======STRJOIN==========\n");
 	test_strjoin();
@@ -111,7 +114,8 @@ int main()
 	printf("=======STRNCPY=========\n");
 	test_strncpy();
 
-	char *dest = ft_strsub("try this!", 2, 5);
-	printf("lets seeeee:%s\n", dest);
+	printf("=======STRSUB==========\n");
+	test_strsub();
+
 	return 0;
 }

@@ -25,27 +25,27 @@
 _ft_strsub:
 	push rbp
 	mov rbp, rsp
-	add rsp, 0x20
+	sub rsp, 0x20
 	cmp rdi, 0					; if str = NULL
 	jz exit_fail_strsub
 	cmp rdx, 0					; if len = NULL
 	jz exit_fail_strsub
-	mov [rsp-0x8], rdi
-	mov [rsp-0x10], rsi
-	mov [rsp-0x18], rdx
+	mov [rbp-0x8], rdi
+	mov [rbp-0x10], rsi
+	mov [rbp-0x18], rdx
 	push rdi
 	call _ft_strlen
 	pop rdi
-	cmp rax, [rsp-0x10]		; if start >= len(str)
-	jg exit_fail_strsub
-	mov rdi, [rsp-0x18]
+	cmp rax, [rbp-0x10]		; if start >= len(str)
+	jle exit_fail_strsub
+	mov rdi, [rbp-0x18]
 	call _malloc
 	cmp rax, 0					; if malloc = NULL
 	jz exit_fail_strsub
 	mov rdi, rax
-	mov rsi, [rsp-0x8]
-	add rsi, [rsp-0x10]
-	mov rdx, [rsp-0x18]
+	mov rsi, [rbp-0x8]
+	add rsi, [rbp-0x10]
+	mov rdx, [rbp-0x18]
 	call _ft_strncpy			; if strncpy = NULL
 	cmp rax, 0
 	jz exit_fail_strsub
@@ -54,6 +54,6 @@ _ft_strsub:
 exit_fail_strsub:
 	xor rax, rax
 exit_strsub:
-	sub rsp, 0x20
+	add rsp, 0x20
     leave
 	ret

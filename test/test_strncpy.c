@@ -6,7 +6,7 @@
 /*   By: ryaoi <ryaoi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/10 16:07:07 by ryaoi             #+#    #+#             */
-/*   Updated: 2018/07/10 16:17:06 by ryaoi            ###   ########.fr       */
+/*   Updated: 2018/07/10 17:49:04 by ryaoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,14 +59,14 @@ void		test_strncpy(void)
 	bzero(dst_real, 512);
 	ft_strncpy(dst_mine, str, 7);
 	strncpy(dst_real, str, 7);
-	printf("Src :%s lenght:%d | mine:%s\treal:%s\t", str, 7, dst_mine, dst_real);
+	printf("Src :%s length:%d | mine:%s\treal:%s\t", str, 7, dst_mine, dst_real);
 	if (strcmp(dst_mine, dst_real) == 0)
 		printf(GOOD);
 	else
 		printf(BAD);
 	ft_strncpy(dst_mine, str, strlen(str));
 	strncpy(dst_real, str, strlen(str));
-	printf("Src :%s lenght:%lu | mine:%s\treal:%s\t", str, strlen(str), dst_mine, dst_real);
+	printf("Src :%s length:%lu | mine:%s\treal:%s\t", str, strlen(str), dst_mine, dst_real);
 	if (strcmp(dst_mine, dst_real) == 0)
 		printf(GOOD);
 	else

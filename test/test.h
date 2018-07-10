@@ -6,7 +6,7 @@
 /*   By: ryaoi <ryaoi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/08 14:54:27 by ryaoi             #+#    #+#             */
-/*   Updated: 2018/07/10 16:10:38 by ryaoi            ###   ########.fr       */
+/*   Updated: 2018/07/10 17:47:52 by ryaoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,6 @@ void	test_strjoin(void);
 void	test_putstr(void);
 void	test_strcpy(void);
 void	test_strncpy(void);
+void	test_strsub(void);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: ryaoi <ryaoi@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/07/03 18:35:47 by ryaoi             #+#    #+#              #
-#    Updated: 2018/07/10 16:46:44 by ryaoi            ###   ########.fr        #
+#    Updated: 2018/07/10 17:48:02 by ryaoi            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,8 @@ TEST		= main.c \
 			  test_strjoin.c \
 			  test_putstr.c \
 			  test_strcpy.c \
-			  test_strncpy.c
+			  test_strncpy.c \
+			  test_strsub.c
 
 OBJ			= $(addprefix $(OBJ_DIR), $(SRC:%.s=%.o))
 
