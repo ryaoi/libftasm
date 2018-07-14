@@ -6,7 +6,7 @@
 /*   By: ryaoi <ryaoi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/08 14:56:11 by ryaoi             #+#    #+#             */
-/*   Updated: 2018/07/10 17:57:22 by ryaoi            ###   ########.fr       */
+/*   Updated: 2018/07/14 19:18:36 by ryaoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ void		test_retint(const char *limit_str, ...)
 	va_end(arg);
 }
 
-int main()
+int main(int ac, char **av)
 {
-	
+	(void)ac;
 	int tab_test[] = {0x61, 0x32, 0x10, 0x12, 0x31, 0x200, 0x54, 0x6a, '3'};
 	char	*total = "9";
 
@@ -93,11 +93,13 @@ int main()
 
 	printf("==========CAT==========\n");
 
-	int fd = open("libfts.h", O_RDONLY);
+	int fd = open(__FILE__, O_RDONLY);
 	if (fd == -1)
 		return (EXIT_FAILURE);
 	ft_cat(fd);
 	
+	ft_cat(open(av[0], O_RDONLY));
+
 	printf("=======ENDCAT==========\n");
 
 	printf("\n\n[*]Bonus!\n\n");
@@ -105,7 +107,7 @@ int main()
 	printf("=======STRJOIN==========\n");
 	test_strjoin();
 
-	printf("=======STRPUT==========\n");
+	printf("=======PUTSTR==========\n");
 	test_putstr();
 
 	printf("=======STRCPY==========\n");

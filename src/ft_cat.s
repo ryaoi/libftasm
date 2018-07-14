@@ -28,7 +28,7 @@ _ft_cat:
 	push rbp
 	mov rbp, rsp
 	cmp rdi, -1
-	jz _exit_ft_cats
+	jle _exit_ft_cats
 	xor r15, r15			; stock address for print all
 
 _loop_read:
@@ -66,12 +66,6 @@ _joinstr:
 	pop rdi
 	pop r15
 
-	push r15
-	push rdi
-	call _free				; free the old string
-	pop rdi
-	pop r15
-
 	mov r15, rax			;new string
 
 	push rsi
@@ -89,9 +83,6 @@ _joinstr:
 _print_result:
 	mov rdi, r15
 	call _ft_putstr
-
-	mov rdi, r15
-	call _free
 	
 _exit_ft_cats:
 	leave

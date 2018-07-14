@@ -19,6 +19,7 @@ _ft_strlen:
 	mov rbx, rdi
 	xor al, al
 	mov rcx, 0xFFFFFFFF
+	cld
 	repne scasb			;scan till hitting al
 	sub rdi, rbx
 	sub rdi, 0x1

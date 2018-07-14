@@ -6,12 +6,14 @@
 /*   By: ryaoi <ryaoi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/08 13:56:03 by ryaoi             #+#    #+#             */
-/*   Updated: 2018/07/10 16:47:08 by ryaoi            ###   ########.fr       */
+/*   Updated: 2018/07/14 19:40:37 by ryaoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFTS
 #define LIBFTS
+
+#include <stdlib.h>
 
 int 	ft_isalpha(int c);
 int 	ft_isdigit(int c);

@@ -6,7 +6,7 @@
 #    By: ryaoi <ryaoi@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/07/03 18:35:47 by ryaoi             #+#    #+#              #
-#    Updated: 2018/07/10 17:48:02 by ryaoi            ###   ########.fr        #
+#    Updated: 2018/07/10 18:05:07 by ryaoi            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,6 +60,7 @@ OBJ_DIR		= ./obj/
 OBJ_TEST_DIR	= ./test/
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.s $(HEADER)
+	@mkdir -p $(OBJ_DIR)
 	nasm -fmacho64 $< -o $@
 
 $(OBJ_TEST_DIR)%.o : $(OBJ_TEST_DIR)%.c $(HEADER_TEST)
