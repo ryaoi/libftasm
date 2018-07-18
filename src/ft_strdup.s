@@ -1,7 +1,7 @@
 ;-----------------------------------------------
 ;	ft_strdup.s
 ;
-;	char *strdup(const char *s1)
+;	char *ft_strdup(const char *s1)
 ;
 ;	The ft_strdup() function allocates sufficient
 ;	memory for a copy of the string s1, does the

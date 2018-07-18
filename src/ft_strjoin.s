@@ -69,10 +69,10 @@ _ft_strjoin:
     mov rax, r15            ; return new address
 strjoin_exit:
     pop r15
-    leave
+    pop rbp
     ret
 
 strjoin_undefined_exit:
-	mov rax, 0
-	leave
+	xor rax, rax
+	pop rbp
 	ret

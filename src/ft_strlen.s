@@ -1,5 +1,5 @@
 ;-----------------------------------------------
-;	_ft_strlen.s
+;	ft_strlen.s
 ;
 ;	This 64-bit function computes the length
 ;	of the string s.

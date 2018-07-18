@@ -1,5 +1,5 @@
 ;-----------------------------------------------
-;	_ft_cat.s
+;	ft_cat.s
 ;
 ;	void    ft_cat(int fd);
 ;
@@ -28,10 +28,9 @@ _ft_cat:
 	push rbp
 	mov rbp, rsp
 	cmp rdi, -1
-	jle _exit_ft_cats
+	jle exit_ft_cats
 	xor r15, r15			; stock address for print all
-
-_loop_read:
+loop_read:
 	push r15				;save r15
 	push rdi				;rdi should always stock fd
 	lea rsi, [rel buffer]
@@ -42,9 +41,9 @@ _loop_read:
 	pop rdi
 	pop r15
 	cmp r14, -1
-	jz _exit_ft_cats
+	jz exit_ft_cats
 	cmp r15, 0
-	jnz _joinstr
+	jnz joinstr
 
 	push r14
 	push rdi
@@ -54,16 +53,25 @@ _loop_read:
 	pop rdi
 	pop r14
 	cmp r14, BUFFER_SIZE
-	jz _loop_read
-	jmp _print_result
+	jz loop_read
+	jmp print_result
 
-_joinstr:
+joinstr:
 	push r15
 	push rdi
 	mov rdi, r15
 	lea rsi, [rel buffer]
 	call _ft_strjoin
 	pop rdi
+	pop r15
+
+	push r15
+	push rax
+	push rdi
+	mov rdi, r15
+	call _free
+	pop rdi
+	pop rax
 	pop r15
 
 	mov r15, rax			;new string
@@ -76,15 +84,20 @@ _joinstr:
 	pop rdi
 	pop rsi
 	cmp r14, -1
-	jz _exit_ft_cats
+	jz exit_ft_cats
 	cmp r14, BUFFER_SIZE
-	je _loop_read
+	je loop_read
 
-_print_result:
+print_result:
+	push r15
 	mov rdi, r15
 	call _ft_putstr
+	pop r15
+
+	mov rdi, r15
+	call _free
 	
-_exit_ft_cats:
+exit_ft_cats:
 	leave
 	ret
 

@@ -1,10 +1,10 @@
 ;-----------------------------------------------
 ;	ft_strncpy.s
 ;
-;   char * strncpy(char * dst, const char * src,
+;   char * ft_strncpy(char * dst, const char * src,
 ;					size_t n);
 ;
-;	The strncpy() functions copy the string src
+;	The ft_strncpy() functions copy the string src
 ;   to dst for n length.
 ;
 ;	ryaoi@student.42.fr

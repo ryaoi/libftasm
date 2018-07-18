@@ -6,7 +6,7 @@
 /*   By: ryaoi <ryaoi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/08 14:56:11 by ryaoi             #+#    #+#             */
-/*   Updated: 2018/07/14 19:18:36 by ryaoi            ###   ########.fr       */
+/*   Updated: 2018/07/18 13:22:40 by ryaoi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,13 +92,11 @@ int main(int ac, char **av)
 	test_strdup();
 
 	printf("==========CAT==========\n");
-
-	int fd = open(__FILE__, O_RDONLY);
-	if (fd == -1)
-		return (EXIT_FAILURE);
-	ft_cat(fd);
-	
+	ft_cat(0);
+	ft_cat(open(__FILE__, O_RDONLY));
 	ft_cat(open(av[0], O_RDONLY));
+	ft_cat(-42);
+	(void)ac;
 
 	printf("=======ENDCAT==========\n");
 

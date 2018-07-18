@@ -1,9 +1,9 @@
 ;-----------------------------------------------
 ;	ft_memset.s
 ;
-;	void *memset(void *b, int c, size_t len);
+;	void *ft_memset(void *b, int c, size_t len);
 ;
-;	The memset() function writes len bytes of 
+;	The ft_memset() function writes len bytes of 
 ;	value c (converted to an unsigned char) to
 ;	the string b
 ;
@@ -20,6 +20,7 @@ _ft_memset:
 	push rdi
 	mov rax, rsi
 	mov rcx, rdx
+	cld
 	rep stosb			;untill rcx=0
 	mov rax, rdi
 	pop rdi

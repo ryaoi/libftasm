@@ -1,7 +1,7 @@
 ;-----------------------------------------------
-;	_ft_isascii.s
+;	ft_isascii.s
 ;
-;	int isascii(int c);
+;	int ft_isascii(int c);
 ;
 ;	This 64-bit function tests for an ASCII
 ;	character, which is any character between

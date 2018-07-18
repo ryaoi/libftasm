@@ -1,10 +1,10 @@
 ;-----------------------------------------------
-;	_ft_strsub.s
+;	ft_strsub.s
 ;
-;   char * strsub(char * str, unsigned int start, 
+;   char * ft_strsub(char * str, unsigned int start, 
 ;	size_t len);
 ;
-;	The strsub() functions copy the string from start
+;	The ft_strsub() functions copy the string from start
 ;   Allocates (with malloc(3)) and returns a “fresh” 
 ;	substring from the string given as argument. 
 ;	The substring begins at indexstart and is

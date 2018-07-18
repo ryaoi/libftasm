@@ -1,7 +1,7 @@
 ;-----------------------------------------------
 ;	ft_isdigit.s
 ;
-;	int		isdigit(int c);
+;	int		ft_isdigit(int c);
 ;	
 ;	This 64-bit function tests for a decimal
 ;	digit character

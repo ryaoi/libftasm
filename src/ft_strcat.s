@@ -1,5 +1,5 @@
 ;-----------------------------------------------
-;	_ft_strcat.s
+;	ft_strcat.s
 ;
 ;	This 64-bit function append a copy of the 
 ;	null-terminated string s2 to the end of the

@@ -1,5 +1,5 @@
 ;-----------------------------------------------
-;	_ft_isalnum.s
+;	ft_isalnum.s
 ;
 ;	int		ft_isalnum(int c);
 ;

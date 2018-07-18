@@ -1,9 +1,9 @@
 ;-----------------------------------------------
 ;	ft_strcpy.s
 ;
-;   char * strcpy(char * dst, const char * src);
+;   char * ft_strcpy(char * dst, const char * src);
 ;
-;	The strcpy() functions copy the string src
+;	The ft_strcpy() functions copy the string src
 ;   to dst (including the terminating `\0'
 ;   character.)
 ;
@@ -25,6 +25,7 @@ _ft_strcpy:
     pop rsi
     pop rdi
     mov rcx, rax
+    cld
 	rep movsb			;mov till rcx = 0
     mov byte[rdi], 0    ;put '\0' at the end
     leave

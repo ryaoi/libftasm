@@ -1,7 +1,7 @@
 ;-----------------------------------------------
-;	_ft_isalpha.s
+;	ft_isalpha.s
 ;
-;	int		isalpha(int c);
+;	int		ft_isalpha(int c);
 ;
 ;	This 64-bit function tests for any character
 ;	for which isupper(3) or islower(3) is true
